@@ -24,7 +24,7 @@ const TimersView = () => {
   const timers = [
     { title: "Stopwatch", C: <Stopwatch /> },
     { title: "Countdown", C: <Countdown initTime={60000000000000} /> },
-    { title: "XY", C: <XY /> },
+    { title: "XY", C: <XY initTime={2000} initRounds={2} /> },
     { title: "Tabata", C: <Tabata /> },
   ];
 

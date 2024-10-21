@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import Helpers from "../../utils/helpers";
+import { milisecondsToTime } from "../../utils/helpers";
 
 type CountdownProps = {
     initTime: number;
@@ -17,13 +17,13 @@ const Countdown = ({initTime}: CountdownProps) => {
         if (status.current === 'start') return
         status.current = 'start';
         intervalRef.current = setInterval(() => {
-            setTime((currentTime) => currentTime - 50)
+            setTime((time) => time - 50)
         }, 50);
     }
 
     return (
         <div>
-            <h1>{Helpers.milisecondsToTime(time)}</h1>
+            <h1>{milisecondsToTime(time)}</h1>
             <button onClick={onStart}>▶️</button>
 
             <button onClick={() => {
