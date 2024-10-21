@@ -7,40 +7,30 @@ const Stopwatch = () => {
 
     const [time, setTime] = useState<number>(0);
     const status = useRef('stop');
-    const prom = new Promise(() => {
-        console.log(status.current);
-        setTimeout(() => {
-            if(status.current === 'run') {
-                setTime(time + 1000);
-            }
-        }, 1000);   
-    });
-    
-    
-    
-      
+    const intervalRef = useRef<number | undefined>(undefined);
+
+    const onStart = () => {
+        if (status.current === 'start') return
+        status.current = 'start';
+        intervalRef.current = setInterval(() => {
+            setTime((currentTime) => currentTime + 50)
+        }, 50);
+    }
 
     return (
         <div>
             <h1>{Helpers.milisecondsToTime(time)}</h1>
-            <button onClick={() => {
-                status.current = 'run';
-                console.log(status.current);
-            }}>▶️</button>
+            <button onClick={onStart}>▶️</button>
 
             <button onClick={() => {
-                console.log(status.current);
-                if (status.current !== 'pause') {
-                    status.current = 'pause';
-                } else {
-                    status.current = 'run';
-                };
-                console.log(status.current);
+               status.current = 'pause';
+               clearInterval(intervalRef.current);
             }}>⏸️</button>
 
             <button onClick={() => {
                 status.current = 'stop';
                 setTime(0);
+                clearInterval(intervalRef.current);
             }}>⏹️</button>                    
         </div>
     );
