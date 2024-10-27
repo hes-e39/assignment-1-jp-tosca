@@ -7,10 +7,10 @@ import { TimerButton,
          TimerDisplay,
          ControlsDiv } from "../generic/TimerComps.tsx";
 type StopwatchProps = {
-    refreshRate: number;
+    refreshRate?: number;
 };
 
-const Stopwatch = ({refreshRate}: StopwatchProps) => {
+const Stopwatch = ({refreshRate = 1000}: StopwatchProps) => {
 
     const [time, setTime] = useState<number>(0);
     const status = useRef('stop');

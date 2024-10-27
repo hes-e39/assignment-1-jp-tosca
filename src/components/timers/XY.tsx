@@ -6,13 +6,16 @@ import { onPauseStandard,
 import { TimerButton, 
          TimerDisplay,
          ControlsDiv } from "../generic/TimerComps.tsx";
-type XYProps = {
-    initTime: number;
-    initRounds: number;
-    refreshRate: number;
+
+         type XYProps = {
+    initTime?: number;
+    initRounds?: number;
+    refreshRate?: number;
 };
 
-const XY = ({initTime, initRounds, refreshRate}:XYProps) => {
+const XY = ({initTime = 60000, 
+             initRounds = 10, 
+             refreshRate = 1000}:XYProps) => {
 
     const [rounds, setRounds] = useState(initRounds);
     const [time, setTime] = useState(initTime);

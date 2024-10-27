@@ -9,13 +9,16 @@ import { TimerButton,
          ControlsDiv } from "../generic/TimerComps.tsx";
 
 type TabataProps = {
-    initWorkTime: number;
-    initRestTime: number;
-    initRounds: number;
-    refreshRate: number;
+    initWorkTime?: number;
+    initRestTime?: number;
+    initRounds?: number;
+    refreshRate?: number;
 };
 
-const Tabata = ({initWorkTime, initRestTime, initRounds, refreshRate}:TabataProps) => {
+const Tabata = ({initWorkTime = 60000, 
+                 initRestTime = 15000, 
+                 initRounds = 10, 
+                 refreshRate = 1000}:TabataProps) => {
 
     const [rounds, setRounds] = useState(initRounds*2);
     const [time, setTime] = useState(initWorkTime);

@@ -8,11 +8,11 @@ import { TimerButton,
          ControlsDiv } from "../generic/TimerComps.tsx";
 
 type CountdownProps = {
-    initTime: number;
-    refreshRate: number;
+    initTime?: number;
+    refreshRate?: number;
 };
 
-const Countdown = ({initTime, refreshRate}: CountdownProps) => {
+const Countdown = ({ initTime = 60000, refreshRate = 1000 }: CountdownProps) => {
 
     const [time, setTime] = useState<number>(initTime);
     const status = useRef('stop');
