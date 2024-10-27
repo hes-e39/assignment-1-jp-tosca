@@ -22,10 +22,10 @@ const TimerTitle = styled.div``;
 
 const TimersView = () => {
   const timers = [
-    { title: "Stopwatch", C: <Stopwatch /> },
-    { title: "Countdown", C: <Countdown initTime={60000000000000} /> },
-    { title: "XY", C: <XY initTime={2000} initRounds={2} /> },
-    { title: "Tabata", C: <Tabata workTime={3000} restTime={2000} initRounds={4} /> },
+    { title: "Stopwatch", C: <Stopwatch refreshRate={1000}/> },
+    { title: "Countdown", C: <Countdown initTime={60000000000000} refreshRate={1000} /> },
+    { title: "XY", C: <XY initTime={2000} initRounds={2} refreshRate={1000}/> },
+    { title: "Tabata", C: <Tabata initWorkTime={3000} initRestTime={2000} initRounds={4} refreshRate={1000}/> },
   ];
 
   return (
